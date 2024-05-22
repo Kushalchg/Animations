@@ -10,7 +10,13 @@ const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        screenOptions={() => ({headerShown: false, drawerType: 'slide'})}>
+        screenOptions={() => ({
+          headerShown: false,
+          drawerType: 'slide',
+          drawerStyle: {
+            width: 300,
+          },
+        })}>
         <Drawer.Screen
           name="HomeScreen"
           component={HomeScreen}
