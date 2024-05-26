@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 import React from 'react';
-import HomeScreen from '../screens/HomeScreen';
+import SwipeGesture from '../screens/SwipeGesture';
 import ChartScreen from '../screens/ChartScreen';
 
 const MainNavigation = () => {
@@ -18,8 +18,8 @@ const MainNavigation = () => {
           },
         })}>
         <Drawer.Screen
-          name="HomeScreen"
-          component={HomeScreen}
+          name="SwipeGesture"
+          component={SwipeGesture}
           options={{title: 'Home Screen'}}
         />
         <Drawer.Screen
