@@ -10,7 +10,7 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 
-const SwipeGesture = () => {
+const PannableBox = () => {
   const positionX = useSharedValue(0);
   const positionY = useSharedValue(0);
 
@@ -33,17 +33,13 @@ const SwipeGesture = () => {
   }));
   return (
     <GestureDetector gesture={pan}>
-      <View className="flex-1 justify-center items-center">
-        <View className="space-y-6">
-          <Animated.View
-            className="h-20 w-20 rounded-md bg-orange-500"
-            style={animatedStyle}
-          />
-          <View className="h-20 w-20 rounded-md bg-red-500" />
-        </View>
-      </View>
+      <Animated.View
+        className="h-20 w-20 rounded-md bg-orange-500"
+        style={animatedStyle}
+      />
+      <View className="h-20 w-20 rounded-md bg-red-500" />
     </GestureDetector>
   );
 };
 
-export default SwipeGesture;
+export default PannableBox;

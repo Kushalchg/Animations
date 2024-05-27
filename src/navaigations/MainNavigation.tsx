@@ -5,6 +5,7 @@ const Drawer = createDrawerNavigator();
 import React from 'react';
 import SwipeGesture from '../screens/SwipeGesture';
 import ChartScreen from '../screens/ChartScreen';
+import PanGesture from '../screens/pan/PanGesture';
 
 const MainNavigation = () => {
   return (
@@ -18,8 +19,8 @@ const MainNavigation = () => {
           },
         })}>
         <Drawer.Screen
-          name="SwipeGesture"
-          component={SwipeGesture}
+          name="PanGesture"
+          component={PanGesture}
           options={{title: 'Home Screen'}}
         />
         <Drawer.Screen
