@@ -3,17 +3,24 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 import React from 'react';
-import HomeScreen from '../screens/HomeScreen';
-import ChartScreen from '../screens/ChartScreen';
+import SwipeGesture from '../screens/SwipeGesture';
+import ChartScreen from '../screens/RollingAnimationScreen';
+import PanGesture from '../screens/pan/PanGesture';
 
 const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        screenOptions={() => ({headerShown: false, drawerType: 'slide'})}>
+        screenOptions={() => ({
+          headerShown: false,
+          drawerType: 'slide',
+          drawerStyle: {
+            width: 300,
+          },
+        })}>
         <Drawer.Screen
-          name="HomeScreen"
-          component={HomeScreen}
+          name="PanGesture"
+          component={PanGesture}
           options={{title: 'Home Screen'}}
         />
         <Drawer.Screen
