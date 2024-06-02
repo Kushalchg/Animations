@@ -4,7 +4,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 import React from 'react';
 import SwipeGesture from '../screens/SwipeGesture';
-import ChartScreen from '../screens/ChartScreen';
+import ChartScreen from '../screens/RollingAnimationScreen';
 import PanGesture from '../screens/pan/PanGesture';
 
 const MainNavigation = () => {

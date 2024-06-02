@@ -3,6 +3,7 @@ import {
   Directions,
   Gesture,
   GestureDetector,
+  GestureHandlerRootView,
 } from 'react-native-gesture-handler';
 import React from 'react';
 import Animated, {
@@ -32,8 +33,9 @@ const SwipeGesture = () => {
     transform: [{translateX: positionX.value}, {translateY: positionY.value}],
   }));
   return (
-    <GestureDetector gesture={pan}>
-      <View className="flex-1 justify-center items-center">
+    <GestureHandlerRootView
+      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <GestureDetector gesture={pan}>
         <View className="space-y-6">
           <Animated.View
             className="h-20 w-20 rounded-md bg-orange-500"
@@ -41,8 +43,8 @@ const SwipeGesture = () => {
           />
           <View className="h-20 w-20 rounded-md bg-red-500" />
         </View>
-      </View>
-    </GestureDetector>
+      </GestureDetector>
+    </GestureHandlerRootView>
   );
 };
 
