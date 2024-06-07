@@ -6,6 +6,7 @@ import React from 'react';
 import SwipeGesture from '../screens/SwipeGesture';
 import ChartScreen from '../screens/RollingAnimationScreen';
 import PanGesture from '../screens/pan/PanGesture';
+import TestScreen from '../screens/TestScreen';
 
 const MainNavigation = () => {
   return (
@@ -27,6 +28,11 @@ const MainNavigation = () => {
           name="ChartScreen"
           component={ChartScreen}
           options={{title: 'Chart Screen'}}
+        />
+        <Drawer.Screen
+          name="TestScreen"
+          component={TestScreen}
+          options={{title: 'Test Screen'}}
         />
       </Drawer.Navigator>
     </NavigationContainer>
