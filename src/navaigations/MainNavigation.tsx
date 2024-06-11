@@ -7,6 +7,7 @@ import SwipeGesture from '../screens/SwipeGesture';
 import ChartScreen from '../screens/RollingAnimationScreen';
 import PanGesture from '../screens/pan/PanGesture';
 import TestScreen from '../screens/TestScreen';
+import LocalFirst from '../screens/localstorage/LocalFirst';
 
 const MainNavigation = () => {
   return (
@@ -33,6 +34,11 @@ const MainNavigation = () => {
           name="TestScreen"
           component={TestScreen}
           options={{title: 'Test Screen'}}
+        />
+        <Drawer.Screen
+          name="LocalFirstScreen"
+          component={LocalFirst}
+          options={{title: 'Local First'}}
         />
       </Drawer.Navigator>
     </NavigationContainer>
