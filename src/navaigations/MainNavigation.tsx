@@ -8,6 +8,7 @@ import ChartScreen from '../screens/RollingAnimationScreen';
 import PanGesture from '../screens/pan/PanGesture';
 import TestScreen from '../screens/TestScreen';
 import LocalFirst from '../screens/localstorage/LocalFirst';
+import HocTestScreen from '../screens/HocTestScreen';
 
 const MainNavigation = () => {
   return (
@@ -39,6 +40,11 @@ const MainNavigation = () => {
           name="LocalFirstScreen"
           component={LocalFirst}
           options={{title: 'Local First'}}
+        />
+        <Drawer.Screen
+          name="HocTestScreen"
+          component={HocTestScreen}
+          options={{title: 'Hoc Test'}}
         />
       </Drawer.Navigator>
     </NavigationContainer>
