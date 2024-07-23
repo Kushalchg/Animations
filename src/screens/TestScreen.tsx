@@ -1,36 +1,71 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  PermissionsAndroid,
+} from 'react-native';
 import React, {SetStateAction, useState} from 'react';
 import DocumentPicker, {pick} from 'react-native-document-picker';
 import {check, PERMISSIONS, request, RESULTS} from 'react-native-permissions';
+import ReactNativeBlobUtil from 'react-native-blob-util';
 
 const TestScreen = () => {
   const [documentName, setDocumentName] = useState<any>('text.xls');
-  const [base64Data, setBase64Data] = useState<string>('base 64 data here');
+  const [base64Data, setBase64Data] = useState('');
   const [selected, setSelected] = useState<boolean>(false);
   const [imageUrl, setImageUrl] = useState<string>('');
 
   const pickDocument = async () => {
     try {
-      const [Dcoument] = await pick({
+      const [Document] = await pick({
         type: [DocumentPicker.types.images, DocumentPicker.types.pdf],
       });
-
+      ReactNativeBlobUtil.fs
+        .readFile(`${Document.uri.toString()}`, 'base64')
+        .then(data => {
+          setBase64Data(data);
+          setImageUrl(data.toString());
+        });
       setSelected(true);
-      console.log(Dcoument);
+      console.log(Document);
 
       console.log(imageUrl);
-      setImageUrl(Dcoument.uri.toString());
-      setDocumentName(Dcoument.name);
+      // setImageUrl(Document.uri.toString());
+      setDocumentName(Document.name);
     } catch (error) {
-      console.log('error occured in pickDocument', error);
+      console.log('error occured while Document pick', error);
     }
   };
+
   const requestPermission = () => {
     request('android.permission.READ_EXTERNAL_STORAGE');
   };
 
+  const requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        {
+          title: 'Avyasha wants you permission',
+          message: 'Avyasha wants you Media permission to upload your answers',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the camera');
+      } else {
+        console.log('Camera permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
   const handleDocumentSelect = async () => {
-    console.log('first');
     check(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE)
       .then(result => {
         switch (result) {
@@ -63,40 +98,56 @@ const TestScreen = () => {
   };
 
   return (
-    <View className="flex-1 justify-center items-center">
-      <View className="mt-4">
-        <TouchableOpacity
-          onPress={handleDocumentSelect}
-          className="bg-green-400 px-4 py-3 rounded-md">
-          <Text className="text-black text-xl font-spacegrotesk-medium font">
-            Select your document
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View className="mt-4 px-4">
-        <TouchableOpacity className="">
-          <Text className="text-purple-500 text-lg font-spacegrotesk-medium font">
-            {documentName}
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View className="mt-4 px-4">
-        <TouchableOpacity className="">
-          <Text className="text-blue-500 text-xs font-spacegrotesk-medium font">
-            {base64Data}
-          </Text>
-        </TouchableOpacity>
-        {selected && (
-          <TouchableOpacity className="">
-            <Image source={{uri: imageUrl}} />
-
-            <Text className="text-blue-500 text-xs font-spacegrotesk-medium font">
-              {imageUrl}
+    <ScrollView>
+      <View className="">
+        <View className="mt-4">
+          <TouchableOpacity
+            onPress={handleDocumentSelect}
+            className="bg-green-400 px-4 py-3 rounded-md">
+            <Text className="text-black text-xl font-spacegrotesk-medium font">
+              Select your document
             </Text>
           </TouchableOpacity>
-        )}
+        </View>
+        <View className="mt-4 px-4">
+          <TouchableOpacity className="">
+            <Text className="text-purple-500 text-lg font-spacegrotesk-medium font">
+              {documentName}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View className="mt-4 px-4">
+          <TouchableOpacity className="">
+            <Text
+              className="text-blue-500 text-xs font-spacegrotesk-medium font"
+              numberOfLines={2}>
+              {base64Data}
+            </Text>
+          </TouchableOpacity>
+          {selected && (
+            <>
+              <TouchableOpacity className=" items-center justify-center ">
+                <Image
+                  source={require('../../assets/images/images.jpeg')}
+                  className="h-33 w-32"
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+              {/* <TouchableOpacity className=" bg-green-400 h-32 w-32  p-2 rounded-md items-center justify-center ">
+                <Image
+                  source={{uri: `data:image/png;base64,${imageUrl}`}}
+                  className="h-full w-full"
+                  resizeMode="contain"
+                />
+              </TouchableOpacity> */}
+            </>
+          )}
+          {/* <Text className="text-blue-500 text-xs font-spacegrotesk-medium font">
+            {imageUrl}
+          </Text> */}
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
