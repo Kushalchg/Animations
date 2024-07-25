@@ -9,6 +9,7 @@ import PanGesture from '../screens/pan/PanGesture';
 import TestScreen from '../screens/TestScreen';
 import LocalFirst from '../screens/localstorage/LocalFirst';
 import HocTestScreen from '../screens/HocTestScreen';
+import ScheduleScreen from '../screens/schedule/ScheduleScreen';
 
 const MainNavigation = () => {
   return (
@@ -30,6 +31,11 @@ const MainNavigation = () => {
           name="ChartScreen"
           component={ChartScreen}
           options={{title: 'Chart Screen'}}
+        />
+        <Drawer.Screen
+          name="ScheduleScreen"
+          component={ScheduleScreen}
+          options={{title: 'Booking Detail'}}
         />
         <Drawer.Screen
           name="TestScreen"
