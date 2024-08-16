@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "314321190889",
+    "project_id": "animationapp-dc186",
+    "storage_bucket": "animationapp-dc186.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314321190889:android:e7a9aae714534eeda49578",
+        "android_client_info": {
+          "package_name": "com.animations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314321190889-2p56oi6ga94vnnuaaucjj5m72b61o4gr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.animations",
+            "certificate_hash": "fba5108564e3fc4df187f311ffc9411529d2b804"
+          }
+        },
+        {
+          "client_id": "314321190889-ths4et7g70cu60pledvq1trk84ksj1qv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAELJyGNAoCC2MxDxzoCYyDfJuO0eTr-Bw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314321190889-ths4et7g70cu60pledvq1trk84ksj1qv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

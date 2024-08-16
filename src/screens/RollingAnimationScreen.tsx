@@ -93,8 +93,13 @@ const RollingAnimationScreen = () => {
           <View className="  mx-auto my-auto flex-wrap  ">
             {Array(length)
               .fill(0)
-              .map(() => {
-                return <View className="h-3 w-3 bg-white rounded-full m-1" />;
+              .map((_, index) => {
+                return (
+                  <View
+                    className="h-3 w-3 bg-white rounded-full m-1"
+                    key={index}
+                  />
+                );
               })}
           </View>
         </Animated.View>

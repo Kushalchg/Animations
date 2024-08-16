@@ -1,5 +1,5 @@
 import {View, Text} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {DarkTheme, NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 import React from 'react';
@@ -10,6 +10,8 @@ import TestScreen from '../screens/TestScreen';
 import LocalFirst from '../screens/localstorage/LocalFirst';
 import HocTestScreen from '../screens/HocTestScreen';
 import ScheduleScreen from '../screens/schedule/ScheduleScreen';
+import SigninWithGoogle from '../screens/SigninWithGoogle';
+import CustomComponent from '../screens/children/CustomComponent';
 
 const MainNavigation = () => {
   return (
@@ -48,9 +50,19 @@ const MainNavigation = () => {
           options={{title: 'Local First'}}
         />
         <Drawer.Screen
+          name="GoogleSignin"
+          component={SigninWithGoogle}
+          options={{title: 'Google signin'}}
+        />
+        <Drawer.Screen
           name="HocTestScreen"
           component={HocTestScreen}
           options={{title: 'Hoc Test'}}
+        />
+        <Drawer.Screen
+          name="CustomComponent"
+          component={CustomComponent}
+          options={{title: 'Custom Component'}}
         />
       </Drawer.Navigator>
     </NavigationContainer>
