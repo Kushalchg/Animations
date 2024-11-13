@@ -1,9 +1,7 @@
-import {View, Text} from 'react-native';
-import {DarkTheme, NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 import React from 'react';
-import SwipeGesture from '../screens/SwipeGesture';
 import ChartScreen from '../screens/RollingAnimationScreen';
 import PanGesture from '../screens/pan/PanGesture';
 import TestScreen from '../screens/TestScreen';
@@ -12,6 +10,7 @@ import HocTestScreen from '../screens/HocTestScreen';
 import ScheduleScreen from '../screens/schedule/ScheduleScreen';
 import SigninWithGoogle from '../screens/SigninWithGoogle';
 import CustomComponent from '../screens/children/CustomComponent';
+import NepaliPicker from '../screens/NepaliPicker';
 
 const MainNavigation = () => {
   return (
@@ -63,6 +62,12 @@ const MainNavigation = () => {
           name="CustomComponent"
           component={CustomComponent}
           options={{title: 'Custom Component'}}
+        />
+
+        <Drawer.Screen
+          name="NepaliPicker"
+          component={NepaliPicker}
+          options={{title: 'NepaliPicker'}}
         />
       </Drawer.Navigator>
     </NavigationContainer>
