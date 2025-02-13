@@ -1,42 +1,36 @@
-import {View, Text, Dimensions} from 'react-native';
-import React, {useState} from 'react';
-import {
-  Directions,
-  Gesture,
-  GestureDetector,
-  GestureHandlerRootView,
-} from 'react-native-gesture-handler';
+import { View, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   Easing,
   clamp,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
-  withSequence,
   withTiming,
 } from 'react-native-reanimated';
 
-const {height, width} = Dimensions.get('screen');
+const { height, width } = Dimensions.get('screen');
 const duration = 200;
 const easing = Easing.bezier(0.35, 0.29, 0.39, 0.59);
 const RollingAnimationScreen = () => {
   const [length, setLength] = useState<number>(
     Math.floor(Math.random() * (6 - 1) + 1),
   );
-  const StartingPosition = useSharedValue({x: 0, y: 0});
-  const OffsetPosition = useSharedValue({x: 0, y: 0});
+  const StartingPosition = useSharedValue({ x: 0, y: 0 });
+  const OffsetPosition = useSharedValue({ x: 0, y: 0 });
   const rotation = useSharedValue(0);
   // contineous rotation on end of gesture
   const rotateOnGestureEnd = () => {
     rotation.value = withRepeat(
-      withTiming(rotation.value + 1, {duration, easing}),
+      withTiming(rotation.value + 1, { duration, easing }),
       2,
     );
 
     // sv.value = withRepeat(withTiming(1, { duration, easing }), -1);
   };
   const Pan = Gesture.Pan()
-    .onBegin(event => {
+    .onBegin(() => {
       StartingPosition.value = {
         x: OffsetPosition.value.x,
         y: OffsetPosition.value.y,
@@ -57,7 +51,7 @@ const RollingAnimationScreen = () => {
         ),
       };
     })
-    .onFinalize(event => {
+    .onFinalize(() => {
       StartingPosition.value = {
         x: OffsetPosition.value.x,
         y: OffsetPosition.value.y,
@@ -68,8 +62,8 @@ const RollingAnimationScreen = () => {
     .runOnJS(true);
   const AnimatedStyle = useAnimatedStyle(() => ({
     transform: [
-      {translateX: OffsetPosition.value.x},
-      {translateY: OffsetPosition.value.y},
+      { translateX: OffsetPosition.value.x },
+      { translateY: OffsetPosition.value.y },
       {
         rotate: `${rotation.value * 360}deg`,
       },

@@ -1,34 +1,24 @@
-import {View, Text, Alert, TouchableOpacity, Dimensions} from 'react-native';
-import {
-  Directions,
-  Gesture,
-  GestureDetector,
-  GestureHandlerRootView,
-} from 'react-native-gesture-handler';
+import { View, Text } from 'react-native';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import React from 'react';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
-import PannableBox from './components/PannableBox';
-const {height, width} = Dimensions.get('screen');
 
-function clamp(val: number, min: number, max: number) {
-  return Math.min(Math.max(val, min), max);
-}
 
 const PanGesture = () => {
   const isPressed = useSharedValue(false);
-  const start = useSharedValue({x: 0, y: 0});
-  const offset = useSharedValue({x: 0, y: 0});
-  const scale = useSharedValue({scale: 1, startScale: 0});
+  const start = useSharedValue({ x: 0, y: 0 });
+  const offset = useSharedValue({ x: 0, y: 0 });
+  const scale = useSharedValue({ scale: 1, startScale: 0 });
   const angle = useSharedValue(0);
   const startAngle = useSharedValue(0);
 
   const fling = Gesture.Fling().onStart(e => console.log('fling event', e));
 
   const pinch = Gesture.Pinch()
-    .onStart(e => {
+    .onStart(() => {
       scale.value.startScale = scale.value.scale;
     })
     .onUpdate(e => {
@@ -71,14 +61,14 @@ const PanGesture = () => {
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
-      {translateX: offset.value.x},
-      {translateY: offset.value.y},
-      {rotate: `${angle.value}rad`},
-      {scale: scale.value.scale},
+      { translateX: offset.value.x },
+      { translateY: offset.value.y },
+      { rotate: `${angle.value}rad` },
+      { scale: scale.value.scale },
     ],
   }));
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <GestureDetector gesture={compose}>
         <Animated.View
           style={animatedStyle}

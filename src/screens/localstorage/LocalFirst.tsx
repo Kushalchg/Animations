@@ -1,16 +1,15 @@
-import {View, Text, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
 import UserInputComponent from '../../components/UserInputComponent';
-import {ScrollView} from 'react-native-gesture-handler';
-import {useQuery, useRealm} from '@realm/react';
-import {UserInfo} from '../../../storage/models';
-import {Realm} from '@realm/react';
+import { ScrollView } from 'react-native-gesture-handler';
+import { useQuery, useRealm } from '@realm/react';
+import { UserInfo } from '../../../storage/models';
+import { Realm } from '@realm/react';
 
 const LocalFirst = () => {
   const [name, setName] = useState<String>(' ');
   const [age, setAge] = useState<number>();
   const realm = useRealm();
-  const userInfo = useQuery(UserInfo);
 
   // store data locally on submmiting the data
   const onSubmit = () => {

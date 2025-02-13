@@ -1,5 +1,5 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 import React from 'react';
 import ChartScreen from '../screens/RollingAnimationScreen';
@@ -26,48 +26,48 @@ const MainNavigation = () => {
         <Drawer.Screen
           name="PanGesture"
           component={PanGesture}
-          options={{title: 'Home Screen'}}
+          options={{ title: 'Home Screen' }}
         />
         <Drawer.Screen
           name="ChartScreen"
           component={ChartScreen}
-          options={{title: 'Chart Screen'}}
+          options={{ title: 'Chart Screen' }}
         />
         <Drawer.Screen
           name="ScheduleScreen"
           component={ScheduleScreen}
-          options={{title: 'Booking Detail'}}
+          options={{ title: 'Booking Detail' }}
         />
         <Drawer.Screen
           name="TestScreen"
           component={TestScreen}
-          options={{title: 'Test Screen'}}
+          options={{ title: 'Test Screen' }}
         />
         <Drawer.Screen
           name="LocalFirstScreen"
           component={LocalFirst}
-          options={{title: 'Local First'}}
+          options={{ title: 'Local First' }}
         />
         <Drawer.Screen
           name="GoogleSignin"
           component={SigninWithGoogle}
-          options={{title: 'Google signin'}}
+          options={{ title: 'Google signin' }}
         />
         <Drawer.Screen
           name="HocTestScreen"
           component={HocTestScreen}
-          options={{title: 'Hoc Test'}}
+          options={{ title: 'Hoc Test' }}
         />
         <Drawer.Screen
           name="CustomComponent"
           component={CustomComponent}
-          options={{title: 'Custom Component'}}
+          options={{ title: 'Custom Component' }}
         />
 
         <Drawer.Screen
           name="NepaliPicker"
           component={NepaliPicker}
-          options={{title: 'NepaliPicker'}}
+          options={{ title: 'NepaliPicker' }}
         />
       </Drawer.Navigator>
     </NavigationContainer>

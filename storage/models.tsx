@@ -1,6 +1,4 @@
-import {Text, View} from 'react-native';
-import React, {Component} from 'react';
-import Realm, {BSON, ObjectSchema} from 'realm';
+import Realm, { ObjectSchema } from 'realm';
 
 export class UserInfo extends Realm.Object<UserInfo> {
   _id!: Realm.BSON.ObjectID;
@@ -10,9 +8,9 @@ export class UserInfo extends Realm.Object<UserInfo> {
   static schema: ObjectSchema = {
     name: 'UserInfo',
     properties: {
-      _id: {type: 'objectId', default: () => new Realm.BSON.ObjectId()},
-      name: {type: 'string', indexed: 'full-text'},
-      age: {type: 'int'},
+      _id: { type: 'objectId', default: () => new Realm.BSON.ObjectId() },
+      name: { type: 'string', indexed: 'full-text' },
+      age: { type: 'int' },
     },
     primaryKey: '_id',
   };

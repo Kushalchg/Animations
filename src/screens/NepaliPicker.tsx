@@ -1,10 +1,13 @@
 import React from 'react';
-import {useState} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+
+import { useState } from 'react';
+
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+
 import {
+  CalendarPicker,
   AdToBs,
   BsToAd,
-  CalendarPicker,
   NepaliToday,
 } from 'react-native-nepali-picker';
 
