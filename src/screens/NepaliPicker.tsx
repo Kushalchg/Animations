@@ -14,7 +14,6 @@ import {
 export default function NepaliPicker() {
   const [visible, setVisible] = useState<boolean>(false);
   const [date, setDate] = useState<string>();
-
   const onDateSelect = (PickedDate: string) => {
     setDate(PickedDate);
   };

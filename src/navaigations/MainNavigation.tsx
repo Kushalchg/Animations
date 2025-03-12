@@ -11,6 +11,8 @@ import ScheduleScreen from '../screens/schedule/ScheduleScreen';
 import SigninWithGoogle from '../screens/SigninWithGoogle';
 import CustomComponent from '../screens/children/CustomComponent';
 import NepaliPicker from '../screens/NepaliPicker';
+import MapScreen from '../screens/map/MapScreen';
+import FingerPrintScreen from '../screens/biometrics/FingerPrint';
 
 const MainNavigation = () => {
   return (
@@ -62,6 +64,17 @@ const MainNavigation = () => {
           name="CustomComponent"
           component={CustomComponent}
           options={{ title: 'Custom Component' }}
+        />
+        <Drawer.Screen
+          name="MapScreen"
+          component={MapScreen}
+          options={{ title: 'Map Screen' }}
+        />
+
+        <Drawer.Screen
+          name="FingerPrintScreen"
+          component={FingerPrintScreen}
+          options={{ title: 'FingerPrint Screen' }}
         />
 
         <Drawer.Screen

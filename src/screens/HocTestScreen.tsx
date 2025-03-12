@@ -1,8 +1,8 @@
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
-import {CalendarPicker} from 'react-native-nepali-picker';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { CalendarPicker } from 'react-native-nepali-picker';
 
-const InputComponent = ({children}: any) => {
+const InputComponent = ({ children }: any) => {
   const [value, setValue] = useState<string>('0');
   return (
     <>
@@ -17,7 +17,7 @@ const InputComponent = ({children}: any) => {
   );
 };
 
-const Kelvin = ({value}: {value: string}) => {
+const Kelvin = ({ value }: { value: string }) => {
   return (
     <View className="bg-orange-500 px-4 py-3">
       <Text className="text-black font-spacegrotesk-medium text-lg">
@@ -27,7 +27,7 @@ const Kelvin = ({value}: {value: string}) => {
   );
 };
 
-const Fahrenheit = ({value}: {value: string}) => {
+const Fahrenheit = ({ value }: { value: string }) => {
   return (
     <View className="bg-orange-500 px-4 py-3">
       <Text className="text-black font-spacegrotesk-medium text-lg">
@@ -57,22 +57,6 @@ const HocTestScreen = () => {
           </>
         )}
       </InputComponent>
-      <View>
-        <CalendarPicker
-          visible={visible}
-          onClose={() => setVisible(false)}
-          onDateSelect={onPicked}
-          language="np"
-          theme="dark"
-        />
-      </View>
-      <TouchableOpacity
-        className="bg-purple-500 px-6 py-2 "
-        onPress={() => setVisible(true)}>
-        <Text className="text-black">Pick</Text>
-      </TouchableOpacity>
-
-      <Text className="text-black">{date}</Text>
     </View>
   );
 };
