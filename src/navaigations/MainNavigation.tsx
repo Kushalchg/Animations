@@ -13,6 +13,7 @@ import CustomComponent from '../screens/children/CustomComponent';
 import NepaliPicker from '../screens/NepaliPicker';
 import MapScreen from '../screens/map/MapScreen';
 import FingerPrintScreen from '../screens/biometrics/FingerPrint';
+import WebviewMapScreen from '../screens/WebviewMap/WebviewMap';
 
 const MainNavigation = () => {
   return (
@@ -65,12 +66,20 @@ const MainNavigation = () => {
           component={CustomComponent}
           options={{ title: 'Custom Component' }}
         />
+
+        <Drawer.Screen
+          name="WebviewMapScreen"
+          component={WebviewMapScreen}
+          options={{ title: 'Webview Map' }}
+        />
+
+        {/*
         <Drawer.Screen
           name="MapScreen"
           component={MapScreen}
           options={{ title: 'Map Screen' }}
         />
-
+*/}
         <Drawer.Screen
           name="FingerPrintScreen"
           component={FingerPrintScreen}
